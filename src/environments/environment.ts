@@ -9,5 +9,6 @@ export const environment = {
   // apiUrl: 'http://localhost:7071/api',
   //prod 
   apiUrl: 'https://pg2project.azurewebsites.net/api', 
-  reportUrl:""
+  reportUrl:""/// esto es un comentario
+  
 };
