@@ -199,7 +199,7 @@ export class DashboardComponent implements OnInit {
   deleteRow(id: number) {
     try {
       const element = this.dsKartShop.find((prd) => prd.id === id);
-      this.dsKartShop.splice(this.dsKartShop.indexOf(element));
+      this.dsKartShop.splice(this.dsKartShop.indexOf(element),1);
       this.dsKartShop = [...this.dsKartShop];
       this.swalMixin("Producto removido del carrito de compras", "success");
     } catch (error) {
