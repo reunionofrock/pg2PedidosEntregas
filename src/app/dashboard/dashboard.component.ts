@@ -1,4 +1,10 @@
-import { Component, Injectable, OnInit } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  Injectable,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import * as Chartist from "chartist";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
@@ -20,7 +26,7 @@ export class DashboardComponent implements OnInit {
   skBool: boolean = false;
   myIdPedido: Number;
   myEmailPedido: String;
-  products:Array<any> = [
+  products: Array<any> = [
     // Agrega más productos según tus necesidades
   ];
   cantidadProd: number = 1;
@@ -196,12 +202,20 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  cambiarPestana(){
+    let content: HTMLElement = document.getElementById('buttonProducts');
+    content.click();
+  }
+
   deleteRow(id: number) {
     try {
       const element = this.dsKartShop.find((prd) => prd.id === id);
-      this.dsKartShop.splice(this.dsKartShop.indexOf(element),1);
+      this.dsKartShop.splice(this.dsKartShop.indexOf(element), 1);
       this.dsKartShop = [...this.dsKartShop];
       this.swalMixin("Producto removido del carrito de compras", "success");
+      if (this.dsKartShop.length === 0) {
+        this.cambiarPestana();
+      }
     } catch (error) {
       this.swalMixin("no se puede quitar el producto", "error");
       console.error("no puede eliminar el producto", error);
@@ -211,7 +225,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     this.getProducts();
-
   }
 
   swalFire(icon, title, text) {
