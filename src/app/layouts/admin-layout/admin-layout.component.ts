@@ -83,6 +83,9 @@ export class AdminLayoutComponent implements OnInit {
     let $sidebar_responsive = $("body > .navbar-collapse");
     let $sidebar_img_container = $sidebar.find(".sidebar-background");
 
+    // let $card = $(".card")
+    // let $cardHeader = $card.find(".card-header-tabs");
+
     if (window_width > 767) {
       if ($(".fixed-plugin .dropdown").hasClass("show-dropdown")) {
         $(".fixed-plugin .dropdown").addClass("open");
@@ -115,6 +118,16 @@ export class AdminLayoutComponent implements OnInit {
       if ($sidebar_responsive.length != 0) {
         $sidebar_responsive.attr("data-color", new_color);
       }
+      // $cardHeader.siblings().removeClass("card-header-success");
+      // if(new_color == "green"){
+      //   new_color = "success";
+      // }else if(new_color == "purple"){
+      //   new_color = "primary";
+      // }else if(new_color = "azure"){
+      //   new_color = "info";
+      // }
+      // $cardHeader.attr("car-header-success", "card-header-"+new_color);
+      // $cardHeader.siblings().addClass("card-header-"+new_color);
     });
 
     $(".fixed-plugin .img-holder").click(function () {
