@@ -1,0 +1,19 @@
+.rbr {
+    padding: 0px 1%;
+}
+
+.mat-row:hover {
+    background-color: lightgrey;
+}
+
+.table {
+    max-height: 300px;
+    /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto;
+}
+
+.table-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}

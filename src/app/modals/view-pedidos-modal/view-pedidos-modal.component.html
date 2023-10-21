@@ -1,0 +1,154 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Informacion de Pedido</h4>
+                        <p class="card-category">Observa informacion de tu pedido</p>
+                    </div>
+                    <div class="card-body">
+                        <mat-progress-bar mode="indeterminate" *ngIf="barbool"></mat-progress-bar>
+                        <div class="tab-content" id="tableTracking">
+                            <div class="tab-pane active" id="products">
+                                <div class="row justify-content-center" *ngFor="let ped of pedidos">
+                                    <div class="card">
+                                        <mat-progress-bar mode="indeterminate" *ngIf="barbool"></mat-progress-bar>
+                                        <div class="tab-content" id="tableTracking">
+                                            <div class="tab-pane active" id="products">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-md-9" *ngFor="let ped of pedidos">
+                                                        <div class="row justify-content-center">
+                                                            <div class="card-header ">
+                                                                <h3 class="card-title">Pedido No. {{ ped.idPedido }}
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <h4><i class="material-icons">person</i> {{
+                                                                        ped.nombre
+                                                                        }}</h4>
+                                                                    <p><i class="material-icons">home</i> {{
+                                                                        ped.direccion
+                                                                        }}</p>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <p><i class="material-icons">mail</i> {{ ped.email
+                                                                        }}
+                                                                    </p>
+                                                                    <p><i class="material-icons">call</i> {{
+                                                                        ped.telefono }}
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <p *ngIf="ped.metodoPago=='cash'"><i
+                                                                            class="material-icons">money</i> Pago en
+                                                                        Efectivo</p>
+                                                                    <p *ngIf="ped.metodoPago=='target'"><i
+                                                                            class="material-icons">credit_card</i> Pago
+                                                                        con
+                                                                        Tarjeta</p>
+                                                                    <p *ngIf="ped.tipoEntrega=='SH'"><i
+                                                                            class="material-icons">local_shipping</i>
+                                                                        Entrega en domicilio</p>
+                                                                    <p *ngIf="ped.tipoEntrega=='PS'"><i
+                                                                            class="material-icons">local_mall</i>
+                                                                        Entrega en
+                                                                        tienda</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <p *ngIf="ped.estado=='Proceso'"><i
+                                                                            class="material-icons">pending</i>{{
+                                                                        ped.estado }}</p>
+                                                                    <p *ngIf="ped.estado=='Aceptado'"><i
+                                                                            class="fa-solid fa-truck-fast"></i>{{
+                                                                        ped.estado }}</p>
+                                                                    <p *ngIf="ped.estado=='Rechazado'"><i
+                                                                            class="fa-solid fa-circle-xmark"></i>{{
+                                                                        ped.estado }}</p>
+                                                                    <p *ngIf="ped.estado=='Entregado'"><i
+                                                                            class="fa-solid fa-circle-check"></i>{{
+                                                                        ped.estado }}</p>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <p><i class="material-icons">calendar_month</i>Fecha creacion: {{
+                                                                        ped.fechaPedido | date: 'dd/MM/yy' }}</p>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <p><i class="fa-solid fa-money-bill-wave"></i> Total
+                                                                        a pagar: Q {{
+                                                                        ped.total }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <mat-accordion>
+                                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                (closed)="panelOpenState = false">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        Detalle del pedido
+                                                    </mat-panel-title>
+                                                    <mat-panel-description>
+                                                        Ver Productos
+                                                        <!-- Currently I am {{panelOpenState ? 'open' :
+                                                        'closed'}} -->
+                                                    </mat-panel-description>
+                                                </mat-expansion-panel-header>
+                                                <div class="tab-pane" id="shopKart">
+                                                    <!-- <cdk-virtual-scroll-viewport tvsItemSize class="wrapper mat-elevation-z2"> -->
+                                                    <div class="table-responsive table-container">
+                                                        <mat-table [dataSource]="detallePedido" class="table">
+                                                            <ng-container matColumnDef="nombre">
+                                                                <mat-header-cell *matHeaderCellDef> Producto
+                                                                </mat-header-cell>
+                                                                <mat-cell *matCellDef="let element"> {{element.nombre}}
+                                                                </mat-cell>
+                                                            </ng-container>
+                                                            <ng-container matColumnDef="precio">
+                                                                <mat-header-cell *matHeaderCellDef>
+                                                                    Precio</mat-header-cell>
+                                                                <mat-cell *matCellDef="let element">Q {{element.precio}}
+                                                                </mat-cell>
+                                                            </ng-container>
+                                                            <ng-container matColumnDef="cantidad">
+                                                                <mat-header-cell
+                                                                    *matHeaderCellDef>Cantidad</mat-header-cell>
+                                                                <mat-cell *matCellDef="let element">{{element.cantidad}}
+                                                                </mat-cell>
+                                                            </ng-container>
+                                                            <ng-container matColumnDef="subtotal">
+                                                                <mat-header-cell
+                                                                    *matHeaderCellDef>Subtotal</mat-header-cell>
+                                                                <mat-cell *matCellDef="let element">
+                                                                    {{element.subtotal}}
+                                                                </mat-cell>
+                                                            </ng-container>
+                                                            <mat-header-row *matHeaderRowDef="displayedColumns">
+                                                            </mat-header-row>
+                                                            <mat-row *matRowDef="let row; columns: displayedColumns;">
+                                                            </mat-row>
+                                                            <!-- <mat-footer-row *matFooterRowDef="displayedColumnsDSKartShop; sticky: true"></mat-footer-row> -->
+                                                        </mat-table>
+                                                    </div>
+                                                </div>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
