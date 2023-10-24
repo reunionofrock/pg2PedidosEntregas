@@ -137,7 +137,9 @@ export class DashboardComponent implements OnInit {
       const data = result;
     });
   }
-
+  selectCategoryProduct(){
+    
+  }
   getProducts() {
     try {
       if (this.products.length == 0) {

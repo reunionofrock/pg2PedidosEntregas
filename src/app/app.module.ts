@@ -13,7 +13,7 @@ import { DataOrdersModalComponent } from './modals/data-orders-modal/data-orders
 import { ViewPedidosModalComponent } from './modals/view-pedidos-modal/view-pedidos-modal.component';
 import { NewProductComponent } from './modals/new-product/new-product.component';
 import { ModifyProductModalComponent } from './modals/modify-product-modal/modify-product-modal.component';
-
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -26,9 +26,10 @@ import { ModifyProductModalComponent } from './modals/modify-product-modal/modif
     RouterModule,
     AppRoutingModule,
     MaterialModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ,
+  schemas: [
     NO_ERRORS_SCHEMA],
   declarations: [
     AppComponent,

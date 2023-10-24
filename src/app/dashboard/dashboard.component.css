@@ -1,19 +1,39 @@
 .rbr {
-    padding: 0px 1%;
+  padding: 0px 1%;
 }
 
 .mat-row:hover {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
 .table {
-    max-height: 300px;
-    /* Ajusta la altura máxima según tus necesidades */
-    overflow-y: auto;
+  max-height: 300px;
+  /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto;
 }
 
 .table-header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+
+/* styles.css */
+
+/* Colores personalizados */
+/* Aplicar colores personalizados a los elementos */
+
+
+
+.mi-chip-herbax {
+  background-color: #59b05c;
+  color: white;
+}
+
+.mi-chip-otro {
+  background-color: var(--otro-color);
+  color: white;
 }

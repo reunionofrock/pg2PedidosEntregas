@@ -128,7 +128,7 @@
                             class="btn btn-primary btn-link btn-sm btn-just-icon">
                             <i class="material-icons">edit</i>
                           </button>
-                          <button (click)="deleteRow(element)" mat-raised-button type="button"
+                          <button *ngIf="element.disponible==true" (click)="deleteRow(element)" mat-raised-button type="button"
                             matTooltip="Borrar Producto" [matTooltipPosition]="'above'"
                             class="btn btn-primary btn-link btn-sm btn-just-icon">
                             <i class="material-icons">delete</i>

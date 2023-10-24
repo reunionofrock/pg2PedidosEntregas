@@ -17,7 +17,7 @@ import { MatTable, MatTableModule } from "@angular/material/table";
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatChipsModule } from '@angular/material/chips';
 // import { NgxEchartsModule } from 'ngx-echarts';
 const materialModules = [
 
@@ -47,6 +47,7 @@ const materialModules = [
   // NgxDatatableModule,
   // MatProgressButtonsModule,
   MatSortModule,
+  MatChipsModule
   
 ];
 

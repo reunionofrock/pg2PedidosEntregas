@@ -9,7 +9,8 @@
                                 <span class="nav-tabs-title">Pedidos</span>
                                 <ul class="nav nav-tabs" data-tabs="tabs">
                                     <li class="nav-item">
-                                        <a mat-button class="nav-link active" id ="buttonProducts" #enlaceProductos href="#products" data-toggle="tab">
+                                        <a mat-button class="nav-link active" id="buttonProducts" #enlaceProductos
+                                            href="#products" data-toggle="tab">
                                             <i class="material-icons">list</i> Productos
                                         </a>
                                     </li>
@@ -29,12 +30,19 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <mat-progress-bar mode="indeterminate" *ngIf="barbool"></mat-progress-bar>
+                        <mat-progress-bar mode="indeterminate" *ngIf="barbool"></mat-progress-bar><br>
+                        <!-- <mat-chip-list aria-label="Fish selection">
+                            <mat-chip class="mi-chip-herbax" selected (click)="selectCategoryProduct()">Todos</mat-chip>
+                            <mat-chip class="mi-chip-herbax">Sistema Inmunologico</mat-chip>
+                            <mat-chip class="mi-chip-herbax">Nutricion</mat-chip>
+                            <mat-chip class="mi-chip-herbax">Sistema Nervioso</mat-chip>
+                            <mat-chip class="mi-chip-herbax">Sistema Articular</mat-chip>
+                        </mat-chip-list> -->
                         <div class="tab-content" id="tableTracking">
                             <div class="tab-pane active" id="products">
                                 <div class="row">
                                     <div class="col-md-3" *ngFor="let prd of products">
-                                        <div class="card">
+                                        <div class="card" *ngIf="prd.disponible==true">
                                             <img src={{prd.imagen}}>
                                             <div class="card-body">
                                                 <h3 class="card-title">{{ prd.nombre }}</h3>
@@ -42,9 +50,9 @@
                                                 <p class="card-text">Q{{ prd.subtotal }}</p>
                                                 <div class="row">
                                                     <p>Cantidad: </p>
-                                                    <button mat-button (click)="cont('-',prd)">-</button>
+                                                    <button mat-button (click)="cont('-',prd)"><i class="fa-solid fa-minus"></i></button>
                                                     <p>{{prd.cantidad}}</p>
-                                                    <button mat-button (click)="cont('+',prd)">+</button>
+                                                    <button mat-button (click)="cont('+',prd)"><i class="fa-solid fa-plus"></i></button>
                                                 </div>
                                                 <button mat-mini-fab color="primary" matTooltip="Agregar al carrito"
                                                     class="btn btn-primary" (click)="addKartShop(prd)">
@@ -78,7 +86,8 @@
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="col-md-4">
-                                        <button mat-raised-button color="primary" (click)="viewPedido()"><i class="material-icons">payments</i>
+                                        <button mat-raised-button color="primary" (click)="viewPedido()"><i
+                                                class="material-icons">payments</i>
                                             Aceptar</button>
                                     </div>
                                 </div>
