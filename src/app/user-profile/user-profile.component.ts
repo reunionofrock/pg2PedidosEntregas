@@ -82,7 +82,7 @@ export class UserProfileComponent implements OnInit {
       confirmButtonText: "Si, borrar",
     }).then((result) => {
       if (result.isConfirmed) {
-        this.api.delete("products/delProduct?id=" + element.id).subscribe({
+        this.api.get("products/delProduct?id=" + element.id).subscribe({
           next: (res: any) => {
             console.log(res.ProductsResponse.Productos);
             if (res.ProductsResponse.ApiResponseIndicator == "SUCCESS") {
